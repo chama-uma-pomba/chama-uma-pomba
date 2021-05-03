@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Chama uma Pomba</title>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script>
+  var items =
+  [
+    'Bacalhau à Zé do Pipo:<br><br>Que futuro?',
+    'Prisão de ventre:<br><br>Que soluções a curto prazo?',
+    'Malucos do Riso:<br><br>Flagelo ou humor incompreendido?',
+    'Pessoas que dizem "vácina":<br><br>Haverá esperança?',
+    'Quispos:<br><br>Porque caíram em desuso?',
+    'Cenouras "baby" e Tomate "cherry":<br><br>normal ou carinho desnecessário para com o alimento?',
+    'Café sem princípio:<br><br>Porquê?',
+    'Automóveis em ponto morto consomem menos combustível:<br><br>Mito ou realidade?',
+    'Filas em caixas de supermercado:<br><br>A que escolhemos será realmente a mais lenta?',
+    'Tios bêbados em casamentos:<br><br>Uma espécie em vias de extinção?',
+    'Produtos das televendas:<br><br>Úteis ou inúteis?',
+    'Marquises:<br><br>Moda atual ou arquitetura do passado?',
+    'Melhor forma de tirar nódoas de vinho tinto:<br><br>Vinagre ou sal e limão?',
+    'Amendoins:<br><br>Comprar com casca ou já descascados?',
+    'Karaokes depois de jantares:<br><br>Quando terminará o pesadelo?',
+    'Iluminação doméstica:<br><br>Lâmpadas de halogéneo ou LED?',
+    'Roubos de sabonetes em hotéis:<br><br>Como prevenir?'
+  ];
+
+  function getNumber(max) {
+    var min = 0, random;
+
+    do {
+      random = Math.floor(Math.random() * (max - min)) + min;
+    } while (random === getNumber.last);
+    getNumber.last = random;
+    return random;
+  };
+
+  $(document).ready(function() {
+    $("#show").click(function(){
+      $(".target").hide( "slide", { direction: "up"  }, 0 );
+      $(".target").show( "slide", {direction: "down" }, 1000 );
+      document.getElementById("ptext").innerHTML = items[getNumber(items.length)];
+    });
+  });
+  </script>
+</head>
+<body>
+  <div style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+    <div class="target" style="width:600px; height:600px; background-image: url('pomba.jpeg');">
+      <p style="font-weight:bold; font-size:24px; text-align:center; padding-top:20px" id="ptext">Relógio de pulso:<br><br>Ego ou necessidade?</p>
+    </div>
+    <button id = "show" class="btn btn-danger" style="width:600px; height:60px; font-size:24px" >Chama outra pomba &#x1F54A;</button>
+  </div>
+</body>
+</html>
